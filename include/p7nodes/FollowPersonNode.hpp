@@ -58,6 +58,9 @@ private:
   rclcpp_lifecycle::LifecyclePublisher<geometry_msgs::msg::Twist>::SharedPtr vel_publisher_;
   rclcpp::Subscription<geometry_msgs::msg::Vector3>::SharedPtr repulsive_vector_sub_;
   void repulsive_callback(const geometry_msgs::msg::Vector3::ConstSharedPtr & detection);
+  bool obstacle_is_target(geometry_msgs::msg::Vector3 obs, geometry_msgs::msg::Vector3 target);
+
+  rclcpp::Time last_obstacle_;
   rclcpp::TimerBase::SharedPtr timer_;
   geometry_msgs::msg::Twist vel_;
   rclcpp::Time last_detection_;
